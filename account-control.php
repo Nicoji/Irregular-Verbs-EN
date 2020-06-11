@@ -42,14 +42,38 @@
                 if(!$return) {
                     $request->closeCursor();
 
-                    $password = password_hash($password, PASSWORD_BCRYPT);
+                    $hash = password_hash($password, PASSWORD_BCRYPT);
 
+                    // add user in database
                     $addProfile = $database->prepare("INSERT INTO users(username, password) VALUES(:username, :password)");
                     $addProfile->execute(array(
                         ":username" => $username,
-                        ":password" => $password
+                        ":password" => $hash
                     ));
                     $addProfile->closeCursor();
+
+                    // get the new user's ID
+                    $getNewUserId = $database->prepare("SELECT id FROM users WHERE username = :username");
+                    $getNewUserId->execute(array(
+                        ":username" => $username
+                    ));
+                    $returnId = $getNewUserId->fetch();
+                    $id = $returnId['id'];
+                    $getNewUserId->closeCursor();
+
+                    // fil verbs_learned table
+                    for($i = 1; $i <= 170; $i++) {
+                        $updateVerbLearned = $database->prepare("
+                        INSERT INTO verbs_learned(id_verb, id_user, status)
+                        VALUES(:idVerb, :idUser, :status)
+                        ");
+                        $updateVerbLearned->execute(array(
+                            ":idVerb" => $i,
+                            ":idUser" => $id,
+                            ":status" => 0
+                        ));
+                    }
+
                     ?>			
                     <p class="message"> Votre compte a été créé ! </p>
                     <div class="col text-center">
