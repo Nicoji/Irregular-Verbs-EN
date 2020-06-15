@@ -56,31 +56,44 @@
                 $requestVerbs = $database->query("SELECT * FROM verbs WHERE id IN ($verbsId)");
                 ?>
                 <div class="container">
-                    <form method="post" action="">
+                    <form method="post" action="test-result.php">
                         <div class="table-responsive">
                             <table id="table" class="table table-condensed">
                                 <tr class="th">
+                                    <th> Verbe: </th>
                                     <th> Infinitif: </th>
                                     <th> Prétérit: </th>
                                     <th> Particie passé: </th>
-                                    <th> Traduction: </th>
                                 </tr>
                                 <form>
                                 <?php
+                                $index = 0;
                                 while($returnVerbs = $requestVerbs->fetch()) {
                                     ?>
                                     <tr>
-                                        <th><?php echo $returnVerbs['infinitive']; ?></th>
-                                        <th><input type="text"></th>
-                                        <th><input type="text"></th>
-                                        <th><input type="text"></th>
+                                        <th><?php echo $returnVerbs['translation']; ?></th>
+                                        <input type="hidden" name="<?php echo "translation".$index; ?>" value="<?php echo $returnVerbs['translation']; ?>">
+                                       
+                                        <th><input type="text" name="<?php echo "infinitive".$index; ?>"></th>
+                                        <input type="hidden" name="<?php echo "answer-infinitive".$index; ?>" value="<?php echo $returnVerbs['infinitive']; ?>">
+
+                                        <th><input type="text" name="<?php echo "simple-past".$index; ?>"></th>
+                                        <input type="hidden" name="<?php echo "answer-simple-past".$index; ?>" value="<?php echo $returnVerbs['simple_past']; ?>">
+                                     
+                                        <th><input type="text" name="<?php echo "past-participle".$index; ?>"></th>
+                                        <input type="hidden" name="<?php echo "answer-past-participle".$index; ?>" value="<?php echo $returnVerbs['past_participle']; ?>">
+                                   
                                     </tr>
+                                    <input type="hidden" name="number" value="<?php echo $number; ?>">
                                 <?php
+                                $index++;
                                 }
                                 ?>
                             </table>
                         </div>
-                        <input type="submit" value="Terminer le test" class="btn btn-info">
+                        <div class="col text-center">
+                            <input type="submit" value="Terminer le test" class="btn btn-info">
+                        </div>
                     </form>
                 </div>
             <?php            
@@ -92,3 +105,7 @@
     } else {
         header("Location:index.php");
     }
+    ?>
+
+</body>
+</html>
