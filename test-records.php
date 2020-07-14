@@ -6,20 +6,22 @@
 <head>
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">  
 	<title> Mes tests </title> 
 </head> 
 <body>
 <?php
 
     if(isset($_SESSION['id'])) {
+        
+        // Include nav bar
+        include('nav.php');
         ?>
+         
         <div class="container">
-            
-            <!-- Include nav bar -->
-            <?php include('nav.php'); ?>
 
-            <h1 class="col-md-8"> Mes tests </h1>	
+            <h1> Mes tests </h1>	
             
             <?php 
             // Database connection :	
@@ -38,7 +40,7 @@
                 ?>
                 <div class="table-responsive">
                 <table id="table" class="table table-condensed">
-                    <tr class="th">
+                    <tr class="center">
                         <th> Date: </th>
                         <th> Nombre de verbes révisés: </th>
                         <th> verbes revisés: </th>
@@ -46,18 +48,52 @@
                     </tr>
                 <?php 
 
-                $request = $database->prepare("SELECT * FROM test WHERE id_user = :id");
+                $request = $database->prepare("SELECT * FROM test WHERE id_user = :id ORDER BY date DESC");
                 $request->execute(array(
                     ":id" => $_SESSION['id']
                 ));
-                $return = $request->fetch();
-
-                // Changing return date data format 
-                $date = DateTime::createFromFormat('Y-m-d H:i:s', $return['date']);
 
                 while($return = $request->fetch()) {
+
+                    // Transform data stocks as int in the macthing string					
+                    switch($return['learn']) {
+                    
+                        case 0 : 
+                            $return['learn'] = "Pas appris";
+                        break;
+                        
+                        case 1 : 
+                            $return['learn'] = "En cours";
+                        break;
+                        
+                        case 2 : 
+                            $return['learn'] = "Appris";
+                        break;
+                        
+                        case 10 : 
+                            $return['learn'] = "Pas appris + En cours";
+                        break;
+                        
+                        case 20 : 
+                            $return['learn'] = "Pas appris + Appris";
+                        break;
+                        
+                        case 12 : 
+                            $return['learn'] = "Appris + En cours";
+                        break;
+                        
+                        case 120 : 
+                            $return['learn'] = "Tous";
+                        break;
+                        
+                        default : 
+                        echo "N/a";
+                    }
+                        
+                    // Changing return date data format 
+                    $date = DateTime::createFromFormat('Y-m-d H:i:s', $return['date']);
                     ?>
-                    <tr>
+                    <tr class="center">
                         <td><?php echo $date->format('d/m/Y'); ?></td>
                         <td><?php echo $return['number']; ?></td>
                         <td><?php echo $return['learn']; ?></td>
@@ -74,7 +110,7 @@
                 ?>
                 <p class="message"> Vous n'avez encore jamais passer de test </p>
                 <div class="col text-center">
-                    <button class="btn btn-info align-self-center return-button"><a href="configuration-test.php" class="return-link"> Faire un test </a></button>
+                    <button class="btn btn-info align-self-center return-button"><a href="configuration-test.php" class="btn"> Faire un test </a></button>
                 </div>	
             <?php    
             }
@@ -83,5 +119,8 @@
         header("Location:index.php");	
     }
     ?>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>

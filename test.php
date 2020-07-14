@@ -6,7 +6,8 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">  
 	<title> Test d'anglais </title> 
 </head> 
 <body>
@@ -24,8 +25,11 @@
                 $learn = "'0','1','2'";
             }
 
+            // Database connection :
             require('database-connection.php');
+
             $sessionId = $_SESSION['id'];
+
             $request = $database->query("
             SELECT id_verb FROM verbs_learned 
             WHERE id_user =  $sessionId
@@ -54,12 +58,17 @@
                 $verbsId = implode(',', $verbsId);
 
                 $requestVerbs = $database->query("SELECT * FROM verbs WHERE id IN ($verbsId)");
+
+                // Include navbar in the page
+                include('nav.php');
                 ?>
+
                 <div class="container">
+                    <h1>Test</h1>
                     <form method="post" action="test-result.php">
                         <div class="table-responsive">
                             <table id="table" class="table table-condensed">
-                                <tr class="th">
+                                <tr class="center">
                                     <th> Verbe: </th>
                                     <th> Infinitif: </th>
                                     <th> Prétérit: </th>
@@ -70,29 +79,30 @@
                                 $index = 0;
                                 while($returnVerbs = $requestVerbs->fetch()) {
                                     ?>
-                                    <tr>
-                                        <th><?php echo $returnVerbs['translation']; ?></th>
+                                    <tr class="center">
+                                        <td><?php echo $returnVerbs['translation']; ?></td>
                                         <input type="hidden" name="<?php echo "translation".$index; ?>" value="<?php echo $returnVerbs['translation']; ?>">
                                        
-                                        <th><input type="text" name="<?php echo "infinitive".$index; ?>"></th>
+                                        <td><input type="text" name="<?php echo "infinitive".$index; ?>"></td>
                                         <input type="hidden" name="<?php echo "answer-infinitive".$index; ?>" value="<?php echo $returnVerbs['infinitive']; ?>">
 
-                                        <th><input type="text" name="<?php echo "simple-past".$index; ?>"></th>
+                                        <td><input type="text" name="<?php echo "simple-past".$index; ?>"></td>
                                         <input type="hidden" name="<?php echo "answer-simple-past".$index; ?>" value="<?php echo $returnVerbs['simple_past']; ?>">
                                      
-                                        <th><input type="text" name="<?php echo "past-participle".$index; ?>"></th>
+                                        <td><input type="text" name="<?php echo "past-participle".$index; ?>"></td>
                                         <input type="hidden" name="<?php echo "answer-past-participle".$index; ?>" value="<?php echo $returnVerbs['past_participle']; ?>">
                                    
                                     </tr>
                                     <input type="hidden" name="number" value="<?php echo $number; ?>">
-                                <?php
-                                $index++;
+                                    <?php
+                                    $index++;
                                 }
                                 ?>
                             </table>
                         </div>
+                        <input type="hidden" name="learn" value="<?php echo $learn; ?>">
                         <div class="col text-center">
-                            <input type="submit" value="Terminer le test" class="btn btn-info">
+                            <input type="submit" value="Terminer le test" class="btn">
                         </div>
                     </form>
                 </div>
@@ -107,5 +117,8 @@
     }
     ?>
 
+<!-- Scripts & Stylesheet to allow dropdown on profile image -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>

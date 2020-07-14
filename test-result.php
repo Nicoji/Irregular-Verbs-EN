@@ -6,11 +6,13 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">  
 	<title> Résultat du test </title> 
 </head> 
 <body>
 <?php
+
     if(isset($_POST['number']) && isset($_POST['learn'])) {
 
         $number = intval($_POST['number']);
@@ -24,12 +26,17 @@
         $pastParticiple = [];
         $userPastParticiple = [];
 
+        // Database connection
         require('database-connection.php');
+        // Include navbar in the page
+        include('nav.php');
         ?>
+
         <div class="container">
+            <h1>Résultat du test</h1>
             <div class="table-responsive">
                 <table id="table" class="table table-condensed">
-                    <tr class="th">
+                    <tr class="center">
                         <th> Verbe: </th>
                         <th> Infinitif: </th>
                         <th> Prétérit: </th>
@@ -77,13 +84,13 @@
                     }
 
                     ?>
-                    <tr class="">
-                        <td><?php echo $return['translation']; ?></td>
-                        <td><?php echo $return['infinitive']; ?></td>
-                        <td><?php echo $return['simple_past']; ?></td>
-                        <td><?php echo $return['past_participle']; ?></td>
+                    <tr class="center">
+                        <td class="right-answer"><?php echo $return['translation']; ?></td>
+                        <td class="right-answer"><?php echo $return['infinitive']; ?></td>
+                        <td class="right-answer"><?php echo $return['simple_past']; ?></td>
+                        <td class="right-answer"><?php echo $return['past_participle']; ?></td>
                     </tr>
-                    <tr class="block-answer">
+                    <tr class="center">
                         <td class="answer">Vos réponses :</td>
                         <td class="<?php echo $infinitiveAnswer; ?>"><?php echo $infinitive[$i]; ?></td>
                         <td class="<?php echo $simplePastAnswer; ?>"><?php echo $simplePast[$i]; ?></td>
@@ -95,6 +102,7 @@
         ?>
                 </table>
             </div>
+
             <?php
             $result = round((($countGoodAnswer / ($number * 3)) * 100), 1);
             ?> 
@@ -104,14 +112,20 @@
                 <input type="hidden" name="number" value="<?php echo $number; ?>">
                 <input type="hidden" name="learn" value="<?php echo $learn; ?>">
                 <input type="hidden" name="result" value="<?php echo $result; ?>">
-                <div class="col text-center">
-                    <input type="submit" value="Enregistrer le test" class="btn btn-info">
+                <div class="col text-center save-button">
+                    <input type="submit" value="Enregistrer le test" class="btn">
                 </div>
             </form>
         </div>
         <?php
 
-
     } else {
         header("Location:configuration-test.php");
     }
+    ?>
+
+<!-- Scripts & Stylesheet to allow dropdown on profile image -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>
