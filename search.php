@@ -14,6 +14,9 @@
     // Verify is user is connected
     if(isset($_SESSION['id'])) {
             
+        // Include nav bar
+        include('nav.php');
+
         if(isset($_POST['search'])) {
 
             $searchRequest = htmlspecialchars($_POST['search']);
@@ -47,29 +50,9 @@
 
                 ?>
                 <div class="container">
-                    <nav class="row navbar">
-                        <div class="offset-md-2 col-md-2">Liste</div>
-                        <div class="col-md-2">Test</div>
-                        <div class="col-md-4">
-                            <form method="post" action="search.php">
-                                <label for="search">Rechercher: </label>
-                                <input type="search" name="search" id="search" class="search">
-                            </form>
-                        </div>
-                        <div class="dropdown show">
-                            <div class="col-md-2">
-                            <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="https://img.icons8.com/windows/64/000000/user-male-circle.png"/>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="change-password.php">Changer mon mot de passe</a>
-                                <a class="dropdown-item" href="my-test.php?id="<?php echo $_SESSION['id'] ?>>Mes tests</a>
-                                <a class="dropdown-item" href="disconnect.php">Se déconnecter</a>
-                            </div>
-                        </div>
-                    </nav>
+
                     <div class="row table-head">
-                        <h1 class="col-md-8"> Résultat pour '<?php echo $searchRequest ?>' : </h1>	
+                        <h1 class="col-md-8"> Résultat pour "<?php echo $searchRequest ?>" : </h1>	
                         <div class="col-md-4 legend-div">
                             <div class="box-legend learn table-success"></div>
                             <div class="legend-text">Appris</div>
@@ -135,14 +118,13 @@
                     </tr> 
                 <?php    
                 }
-
-                $request->closeCusor();
+                $request->closeCursor();
 
             } else {
             ?>			
-				<p class="message"> Aucun résultat </p>
+				<p class="message"> Aucun résultat pour "<?php echo $searchRequest; ?>"</p>
 				<div class="col text-center">
-					<button class="btn btn-primary align-self-center"><a href="verb-list.php" class="centerButton"> Retour </a></button>
+					<button class="btn align-self-center"><a href="verb-list.php"> Accueil </a></button>
 				</div>
 			<?php
             }
