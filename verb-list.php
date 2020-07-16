@@ -14,12 +14,12 @@
 	
 	// Verify is user is connected
 	if(isset($_SESSION['id'])) {
-		
+
+        // Include nav bar 
+        include('nav.php');
         ?>
+        
         <div class="container">
-            
-            <!-- Include nav bar -->
-            <?php include('nav.php'); ?>
 
             <div class="row table-head">
                 <h1 class="col-md-8"> Verbes irréguliers Anglais </h1>	
