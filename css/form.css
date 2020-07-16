@@ -1,5 +1,5 @@
 body {
-    background-color: #138496;
+    background-color: #128dd4;
 }
 
 form {
@@ -12,7 +12,7 @@ legend {
     color: #128dd4;
 }
 
-label {
+label,p {
     font-weight: 700;
     color: #128dd4;
 }
@@ -22,7 +22,7 @@ small {
 }
 
 .form {
-    border: 5px solid #128dd4;
+    border: 5px solid #FFF;
     background-color: #faebd7;
     text-align: center;
     margin-top: 100px;
@@ -61,5 +61,4 @@ small {
 
 .return-button:hover {
     background-color: antiquewhite;
-  
 }
