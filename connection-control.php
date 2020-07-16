@@ -34,12 +34,13 @@
 				":username" => $username
 			));
 			$return = $request->fetch();
+			$hash = $return['password'];
 			
 			// If the username exists in the database
 			if($return) {
 				
 				// And if the password match 			
-				if(password_verify($password, $return['password'])) { 
+				if(password_verify($password, $hash)) { 
 					
 					$_SESSION['id'] = $return['id'];
 					$request->closeCursor();	

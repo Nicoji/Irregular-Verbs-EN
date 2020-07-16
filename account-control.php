@@ -59,10 +59,13 @@
                     ));
                     $returnId = $getNewUserId->fetch();
                     $id = $returnId['id'];
-                    $getNewUserId->closeCursor();
 
-                    // fil verbs_learned table
+                    $index = (1 + (170 * ($id-1)));
+                    $limit = $index + 170;
+
                     for($i = 1; $i <= 170; $i++) {
+                        $getNewUserId->closeCursor();
+
                         $updateVerbLearned = $database->prepare("
                         INSERT INTO verbs_learned(id_verb, id_user, status)
                         VALUES(:idVerb, :idUser, :status)
