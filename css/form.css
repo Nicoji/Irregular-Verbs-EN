@@ -35,6 +35,10 @@ small {
     margin: auto;
 }
 
+.btn {
+    color: #faebd7;
+}
+
 .btn-info {
     margin-bottom: 10px;
 }

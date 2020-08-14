@@ -2,12 +2,12 @@
 
 $host = 'localhost';
 $dbname = 'english';
-$user = 'root';
-$password = 'mysql';
+$userDb = 'root';
+$passwordDb = 'mysql';
 
 try
 {
-    $database = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+    $database = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $userDb, $passwordDb);
 }
 catch (Exception $e)
 {

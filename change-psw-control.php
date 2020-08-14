@@ -28,7 +28,6 @@
             ));
             $return = $request->fetch();
             $hash = $return['password'];
-            echo $_SESSION['id'];
 
             if(password_verify($actualPsw, $hash)) {
 
@@ -43,7 +42,12 @@
                         ':password' => $newPsw,
                         ':id' => $_SESSION['id']
                     ));
-                
+                    ?>
+                    <p class="message"> Le mot de passe a bien été changé ! </p>
+                    <div class="col text-center">
+                        <button class="btn btn-primary align-self-center"><a href="change-password.php" class="centerButton"> Retour à l'accueil </a></button>
+                    </div>
+                <?php
                 // Passwords don't match
                 } else {
                 ?>			
@@ -57,7 +61,7 @@
             // Wrong password (actual one)
             } else {
             ?>			
-                <p class="message"> Mot de passe incorrect </p>
+                <p class="message"> Mot de passe actuel incorrect </p>
                 <div class="col text-center">
                     <button class="btn btn-primary align-self-center"><a href="change-password.php" class="centerButton"> Réessayer </a></button>
                 </div>			
