@@ -68,18 +68,18 @@
                     <form method="post" action="test-result.php">
                         <div class="table-responsive">
                             <table id="table" class="table table-condensed">
-                                <tr class="center">
-                                    <th> Verbe: </th>
-                                    <th> Infinitif: </th>
-                                    <th> Prétérit: </th>
-                                    <th> Particie passé: </th>
+                                <tr>
+                                    <th class="text-center"> Verbe: </th>
+                                    <th class="text-center"> Infinitif: </th>
+                                    <th class="text-center"> Prétérit: </th>
+                                    <th class="text-center"> Particie passé: </th>
                                 </tr>
                                 <form>
                                 <?php
                                 $index = 0;
                                 while($returnVerbs = $requestVerbs->fetch()) {
                                     ?>
-                                    <tr class="center">
+                                    <tr class="text-center">
                                         <td><?php echo $returnVerbs['translation']; ?></td>
                                         <input type="hidden" name="<?php echo "translation".$index; ?>" value="<?php echo $returnVerbs['translation']; ?>">
                                        

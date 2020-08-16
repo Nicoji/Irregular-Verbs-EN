@@ -7,7 +7,7 @@
 	<meta charset="utf-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/form.css">
-	<title> Vérification connexion </title> 
+	<title> Vérification connection </title> 
 </head> 
 <body>
 <?php
@@ -51,7 +51,7 @@
 				?>			
 					<p class="message"> Mot de passe incorrect </p>
 					<div class="col text-center">
-						<button class="btn btn-primary align-self-center"><a href="connexion.php" class="centerButton"> Retourner à la page de connexion</a></button>
+						<button class="btn btn-primary align-self-center"><a href="connection.php" class="centerButton"> Retourner à la page de connection</a></button>
 					</div>			
 				<?php		
 				}

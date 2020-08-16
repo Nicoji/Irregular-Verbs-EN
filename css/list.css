@@ -1,7 +1,7 @@
 body {
-    background-color: #faebd7;
     margin: auto !important;
     max-width: 1500px;
+    background-color: antiquewhite !important;
 }
 
 nav {
@@ -48,6 +48,10 @@ button a {
     margin: 20px 0px;
 }
 
+.table-responsive {
+    /* min-width: 800px; */
+}
+
 .legend-div {
     display: flex;
     justify-content: end;
@@ -69,6 +73,8 @@ button a {
 
 .search {
     height: 30px;
+    width: 20%;
+    max-width: 250px;
 }
 
 .message {

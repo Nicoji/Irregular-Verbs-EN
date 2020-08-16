@@ -15,7 +15,7 @@
     if(isset($_SESSION['id'])) {
         ?>
         <div class="container">
-            <form method="post" action="test.php" class="offset-md-4 col-md-4 form">
+            <form method="post" action="test.php" class="offset-md-1 col-md-10 form">
                 <legend>Configurer le test</legend>
 
                 <label for="number">Nombre de verbe à réviser :</label>

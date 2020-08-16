@@ -40,11 +40,11 @@
                 ?>
                 <div class="table-responsive">
                 <table id="table" class="table table-condensed">
-                    <tr class="center">
-                        <th> Date: </th>
-                        <th> Nombre de verbes révisés: </th>
-                        <th> verbes revisés: </th>
-                        <th> Résultat: </th>
+                    <tr>
+                        <th class="text-center"> Date: </th>
+                        <th class="text-center"> Nombre de verbes révisés: </th>
+                        <th class="text-center"> verbes revisés: </th>
+                        <th class="text-center"> Résultat: </th>
                     </tr>
                 <?php 
 
@@ -93,7 +93,7 @@
                     // Changing return date data format 
                     $date = DateTime::createFromFormat('Y-m-d H:i:s', $return['date']);
                     ?>
-                    <tr class="center">
+                    <tr class="text-center">
                         <td><?php echo $date->format('d/m/Y'); ?></td>
                         <td><?php echo $return['number']; ?></td>
                         <td><?php echo $return['learn']; ?></td>
@@ -110,7 +110,7 @@
                 ?>
                 <p class="message"> Vous n'avez encore jamais passer de test </p>
                 <div class="col text-center">
-                    <button class="btn btn-info align-self-center return-button"><a href="configuration-test.php" class="btn"> Faire un test </a></button>
+                    <button class="btn align-self-center return-button"><a href="configuration-test.php"> Faire un test </a></button>
                 </div>	
             <?php    
             }

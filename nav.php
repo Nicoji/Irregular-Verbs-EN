@@ -3,7 +3,7 @@
     <div class="col-md-2 col-sm-2"><a href="configuration-test.php" class="menu-link">Test</a></div>
     <div class="col-md-3 col-sm-4">
         <form method="post" action="search.php">
-            <input type="search" name="search" id="search" class="search" placeholder="Recherche...">
+            <input type="search" name="search" id="search" class="form-control search" placeholder="Recherche...">
         </form>
     </div>
     <div class="dropdown show">
