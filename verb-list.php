@@ -92,7 +92,7 @@
                                     <option value="2">Appris</option>
                                 </select>
                                 <input type="hidden" name="id-verb" value=<?php echo $return['id'] ?>>
-                                <input type="submit" value="Valider" class="btn btn-info">
+                                <input type="submit" value="Valider" class="btn btn-info verbs-state-btn">
                             </form>	
                         </td>	
                     </tr> 

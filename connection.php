@@ -31,7 +31,11 @@
                     <input type="submit" value="Se connecter" class="btn btn-info"><br>
                     <small> Pas encore de compte ? <a href="create-account.php"> Créez-en un ! </a></small>
                 </form>
+                
             </div>
+            <p class="text-center mt-3" style="color: antiquewhite">
+                Utilisateur : guest / mdp : guest
+            </p>
         </div>
     <?php    
     }

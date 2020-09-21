@@ -23,7 +23,7 @@
 		// Verify that we have the infos from the form 
 		if(isset($_POST['username']) && isset($_POST['password'])) {
 			
-			$username = htmlspecialchars($_POST['username']);
+			$username = htmlspecialchars(strtolower($_POST['username']));
 			$password = htmlspecialchars($_POST['password']);
 			
 			// Connection to database
@@ -51,7 +51,7 @@
 				?>			
 					<p class="message"> Mot de passe incorrect </p>
 					<div class="col text-center">
-						<button class="btn btn-primary align-self-center"><a href="connection.php" class="centerButton"> Retourner à la page de connection</a></button>
+						<button class="btn msg-btn align-self-center"><a href="connection.php" class="centerButton"> Retourner à la page de connection</a></button>
 					</div>			
 				<?php		
 				}
@@ -60,7 +60,7 @@
 			?>			
 				<p class="message"> Cet utilisateur n'existe pas </p>
 				<div class="col text-center">
-					<button class="btn btn-primary align-self-center"><a href="create-account.php" class="centerButton"> Créer un compte</a></button>
+					<button class="btn msg-btn align-self-center"><a href="create-account.php" class="centerButton"> Créer un compte</a></button>
 				</div>
 			<?php	
 			}

@@ -45,7 +45,7 @@
                     ?>
                     <p class="message"> Le mot de passe a bien été changé ! </p>
                     <div class="col text-center">
-                        <button class="btn btn-primary align-self-center"><a href="change-password.php" class="centerButton"> Retour à l'accueil </a></button>
+                        <button class="btn msg-btn align-self-center"><a href="change-password.php" class="centerButton"> Retour à l'accueil </a></button>
                     </div>
                 <?php
                 // Passwords don't match
@@ -53,7 +53,7 @@
                 ?>			
                     <p class="message"> Les mots de passe ne correspondent pas </p>
                     <div class="col text-center">
-                        <button class="btn btn-primary align-self-center"><a href="change-password.php" class="centerButton"> Réessayer </a></button>
+                        <button class="btn msg-btn align-self-center"><a href="change-password.php" class="centerButton"> Réessayer </a></button>
                     </div>			
                 <?php  
                 }              
@@ -63,7 +63,7 @@
             ?>			
                 <p class="message"> Mot de passe actuel incorrect </p>
                 <div class="col text-center">
-                    <button class="btn btn-primary align-self-center"><a href="change-password.php" class="centerButton"> Réessayer </a></button>
+                    <button class="btn msg-btn align-self-center"><a href="change-password.php" class="centerButton"> Réessayer </a></button>
                 </div>			
             <?php
             }

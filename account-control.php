@@ -23,7 +23,7 @@
 		// Verify that we have the infos from the form 
 		if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['psw-confirmation'])) {
 			
-			$username = htmlspecialchars($_POST['username']);
+			$username = htmlspecialchars(strtolower($_POST['username']));
             $password = htmlspecialchars($_POST['password']);
             $pswConfirmation = htmlspecialchars($_POST['psw-confirmation']);
             

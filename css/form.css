@@ -39,6 +39,15 @@ small {
     color: #faebd7;
 }
 
+.msg-btn {
+    background-color: #faebd7;
+    color: #128dd4;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 .btn-info {
     margin-bottom: 10px;
 }
